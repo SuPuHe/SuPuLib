@@ -6,9 +6,16 @@
 #    By: omizin <omizin@student.42heilbronn.de>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/14 10:40:58 by omizin            #+#    #+#              #
-#    Updated: 2025/04/14 11:10:16 by omizin           ###   ########.fr        #
+#    Updated: 2025/04/16 11:15:32 by omizin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+RESET_COLOR	= \033[0m			# Reset to default color
+YELLOW		= \033[1;33m		# Brighter yellow
+BLUE		= \033[1;34m		# Bright blue
+GREEN		= \033[1;32m		# Bright green
+RED			= \033[1;31m		# Bright red
+CYAN		= \033[1;36m		# Bright cyan
 
 NAME = SuPuLib.a
 CC = cc
@@ -72,35 +79,36 @@ all: $(NAME)
 
 #compile all the sources
 $(FT_PRINTF_OBJS_DIR)/%.o: $(FT_PRINTF_SRCS_DIR)/%.c | $(FT_PRINTF_OBJS_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(GNL_OBJS_DIR)/%.o: $(GNL_SRCS_DIR)/%.c | $(GNL_OBJS_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(LIBFT_OBJS_DIR)/%.o: $(LIBFT_SRCS_DIR)/%.c | $(LIBFT_OBJS_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 #create directories for object files
 $(FT_PRINTF_OBJS_DIR):
-	mkdir -p $(FT_PRINTF_OBJS_DIR)
+	@mkdir -p $(FT_PRINTF_OBJS_DIR)
 
 $(GNL_OBJS_DIR):
-	mkdir -p $(GNL_OBJS_DIR)
+	@mkdir -p $(GNL_OBJS_DIR)
 
 $(LIBFT_OBJS_DIR):
-	mkdir -p $(LIBFT_OBJS_DIR)
+	@mkdir -p $(LIBFT_OBJS_DIR)
 
 #compile the library
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	@ar rcs $(NAME) $(OBJS)
+	@echo "$(GREEN)SuPuLib compiled successfully$(RESET_COLOR)"
 
 bonus: all
 
 clean:
-	$(RM) $(FT_PRINTF_OBJS_DIR) $(GNL_OBJS_DIR) $(LIBFT_OBJS_DIR)
+	@$(RM) $(FT_PRINTF_OBJS_DIR) $(GNL_OBJS_DIR) $(LIBFT_OBJS_DIR)
 
 fclean: clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re: fclean all
 
