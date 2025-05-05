@@ -6,7 +6,7 @@
 /*   By: omizin <omizin@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 10:33:00 by omizin            #+#    #+#             */
-/*   Updated: 2025/03/28 11:33:09 by omizin           ###   ########.fr       */
+/*   Updated: 2025/05/05 21:57:13 by omizin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_gnl
 	char	*buf;
 }	t_gnl;
 
+t_gnl	**get_gnl_array(void);
 char	*get_next_line(int fd);
 char	*ft_free_and_return_null(char *line, t_gnl **gnl_ptr);
 char	*ft_error_check(char *line, t_gnl **gnl_ptr);

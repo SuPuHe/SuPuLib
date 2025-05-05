@@ -6,7 +6,7 @@
 /*   By: omizin <omizin@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 10:27:58 by omizin            #+#    #+#             */
-/*   Updated: 2025/03/26 16:54:26 by omizin           ###   ########.fr       */
+/*   Updated: 2025/05/05 22:01:03 by omizin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,9 @@ char	*ft_read_line(int fd, t_gnl **gnl_ptr)
  */
 char	*get_next_line(int fd)
 {
-	static t_gnl	*gnl_array[1024];
+	t_gnl **gnl_array;
 
+	gnl_array = get_gnl_array();
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!gnl_array[fd])
